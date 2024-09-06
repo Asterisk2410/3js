@@ -78,6 +78,7 @@ body {
     height: 60px !important;
     overflow-y: auto;
     font-size: 16px !important;
+    border-radius: 15px 0 0 15px !important;
 }
 
 .type_msg:focus {
