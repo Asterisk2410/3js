@@ -32,7 +32,7 @@
     document.getElementById('scene-container').appendChild(renderer.domElement);
 
     // // Set background image
-    loader.load('./static/images/3d_images.jpg', function(texture) {
+    loader.load('src/static/images/3d_images.jpg', function(texture) {
         scene.background = texture;
     });
 
@@ -48,7 +48,7 @@
     scene.add(directionalLight);
 
     // Load GLB model
-    gltfLoader.load('./static/model/Camila_new.glb', function(gltf) {
+    gltfLoader.load('src/static/model/Camila_new.glb', function(gltf) {
         const character = gltf.scene; // The loaded character
         scene.add(character);
         character.position.set(0.4, 0.5, 2);
@@ -111,7 +111,7 @@
         const str_time = hour + ":" + minute;
         const senderClass = sender === 'user' ? 'justify-content-end' : 'justify-content-start';
         const msgContainerClass = sender === 'user' ? 'msg_cotainer_send' : 'msg_cotainer';
-        const imgSrc = './static/images/drs_user.png';
+        const imgSrc = 'src/static/images/drs_user.png';
         
         const messageHtml = 
             `<div class="d-flex ${senderClass} mb-4">
@@ -181,7 +181,7 @@
         botResponseUIReset(); 
         
         const botIcon = document.querySelector('#botIcon');
-        botIcon.setAttribute('src','./static/images/Hearing.gif');
+        botIcon.setAttribute('src','./src/static/images/Hearing.gif');
         botIcon.style.display = 'block';
         
         const recBtn4 = document.getElementById('waiting');

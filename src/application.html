@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="description" content="Three.js template">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="stylesheet" type="text/css" href="src/css/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://aka.ms/csspeech/jsbrowserpackageraw"></script>
@@ -51,20 +51,26 @@
     </div>
     <!-- Chat Template -->
 
+    <!-- Recording UI Elements Instructions -->
+    <div class="instruct">
+        <p>1. Press the button to start recording.</p>
+        <p>2. Before speaking, please wait for the recording Icon.</p>
+        <p>3. After speaking, please wait for the Response.</p>
+    </div>
+    <!-- Recording UI Elements Instructions -->
+
     <!-- Recording UI Elements -->
     <div class="recording-area" id="recording-area">
         <p id="waiting">Processing...</p>
         <p id="Speaking">Speaking...</p>
         <p id="recording">Recording start</p>
         <img id="botIcon" src="" style="display: none; float: right;">
-        <img id="recBtn" src="./static/images/recording.jpg" alt="recoring-button">
+        <img id="recBtn" src="src/static/images/recording.jpg" alt="recoring-button">
     </div>
     <!-- Recording UI Elements -->
       
     <!-- Main JavaScript File -->
-    <script type="module" src="./js/application.mjs"></script>
-    <script src="./js/speech.js"></script>
-    <script src="./js/chat.js"></script>
+    <script type="module" src="src/js/application.mjs"></script>
 
 
 

@@ -322,7 +322,19 @@ body {
     display: block;
     z-index: 1500;
     position: fixed; /* Fixes the button relative to the viewport */
-    left: 700px; /* Aligns it with the chat card on the left side */
-    bottom: 140px; /* Places it below the chat card */
+    left: 800px; /* Aligns it with the chat card on the left side */
+    bottom: 130px; /* Places it below the chat card */
+}
+
+.instruct{
+    display: block;
+    position: fixed;
+    left: 200px; /* Aligns it with the chat card on the left side */
+    bottom: 123px; /* Places it below the chat card */
+    color: white;
+    font-size: 16px;
+    font-family: 'Montserrat';
+    font-weight: normal;
+    z-index: 1500;
 }
 /* Recording UI Styles */

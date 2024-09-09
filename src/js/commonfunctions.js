@@ -51,7 +51,7 @@ export default class CommonFunctions {
         const str_time = hour + ":" + minute;
         const senderClass = sender === 'user' ? 'justify-content-end' : 'justify-content-start';
         const msgContainerClass = sender === 'user' ? 'msg_cotainer_send' : 'msg_cotainer';
-        const imgSrc = './static/images/drs_bot.png';
+        const imgSrc = 'src/static/images/drs_bot.png';
       
         const messageHtml = 
             `<div class="d-flex ${senderClass} mb-4">
@@ -306,7 +306,7 @@ export default class CommonFunctions {
       recBtn5.style.display = 'block';
       const botIcon1 = document.querySelector('#botIcon');
       botIcon1.style.display = 'inline-block' 
-      botIcon1.setAttribute('src','./static/images/Speaking.gif')  
+      botIcon1.setAttribute('src','./src/static/images/Speaking.gif')  
     };
     this.player.onAudioEnd = (_) => {
       
