@@ -11,7 +11,7 @@ export default class CommonFunctions {
         this.speechState = null
         this.audioContext = new AudioContext();
         this.bufferSource = null
-        this.speechConfig = SpeechSDK.SpeechConfig.fromSubscription("cc2d2316e8a84c04a6045403ab7d3762", "eastus");
+        this.speechConfig = SpeechSDK.SpeechConfig.fromSubscription("6f167c6dfd7a433b8b443320dd73df42", "eastus");
         this.audioStream = SpeechSDK.PullAudioOutputStream.create();
         this.audioConfig = SpeechSDK.AudioConfig.fromStreamOutput(this.audioStream);
         this.synthesizer = new SpeechSDK.SpeechSynthesizer(this.speechConfig, this.audioConfig);
@@ -145,7 +145,12 @@ export default class CommonFunctions {
     sendToChatGPT(voiceInput) {    
         console.log("inside")
         
-        const apiUrl = 'https://pytestar.azurewebsites.net/chat';
+        // const apiUrl = 'http://127.0.0.1:5001/chat';
+        // const apiUrl = 'https://pytestar.azurewebsites.net/chat';  //old drs api url
+        const apiUrl = 'https://pytestdrs.azurewebsites.net/chat';  // new drs api url(testing)
+        // const apiUrl = 'https://pykirloskar.azurewebsites.net/chat'; // api url for kirloskar
+        console.log('here api')
+
         const headers = {
           'Content-Type': 'application/json',
         };
@@ -156,6 +161,7 @@ export default class CommonFunctions {
           "user_input": voiceInput,
         //   "system_data": persona,
         };
+        console.log('here data')
       
         fetch(apiUrl, {
           method: 'POST',
@@ -184,70 +190,6 @@ export default class CommonFunctions {
         this.player.pause();
       }
     }
-    
-    // startSpeaking(chatGPTResponse, emotion){
-    //   const pattern = /\[([^\]]*)\]/g;
-    // //   const resText = document.getElementById('responseText');
-    // //   const selectedVoice = speechConfig.speechSynthesisVoiceName = 'en-US-JennyNeural'; // Customize if needed
-    //   // Process and use the chatGPTResponse as needed
-    //   const lengthyStatement = "Your lengthy statement here...";
-    //   this.player = null;
-    //   this.audioConfig = null;
-    //   this.speechConfig.speechSynthesisVoiceName = 'en-US-JennyNeural';
-    //   const cleanResponse = chatGPTResponse.replace(pattern, '');    
-    //   this.addMessage('assistant', cleanResponse);
-    //   const maxLength = 150; // Max length of each chunk (adjust as needed)
-    //   let chunks = [];
-    //   let startIndex = 0;
-    //   let modelAnimation = this.animation;
-    //   let mixer = this.mixer
-      
-    //   // Event handler for when speech synthesis starts
-      
-    //   this.synthesizer.speakTextAsync(cleanResponse, result => {
-    //     this.audioContext.decodeAudioData(result.audioData, buffer => {
-    //       // Create a new BufferSourceNode for each playback
-    //       this.bufferSource = this.audioContext.createBufferSource();
-    //       this.bufferSource.buffer = buffer;
-          
-    //       // Event listener for when playback ends
-    //       this.bufferSource.onended = function() {
-    //         this.speechState = "end";
-    //         window.console.log("playback finished"); 
-    //         console.log("This is onEnd");  
-    //         this.playAnimation('idle',emotion); 
-    //         const botIcon = document.querySelector('#botIcon');
-    //         const recBtn6 = document.getElementById('Speaking');
-    //         recBtn6.style.display = 'none';
-    //         botIcon.setAttribute('src','')      
-    //         botIcon.style.display = 'none'     
-            
-    //       }.bind(this);
-          
-    //       // Connect and start playback
-    //       this.bufferSource.connect(this.audioContext.destination);
-    //       this.playAnimation('talk', emotion);
-    //       this.addbotMessage(cleanResponse, 'assistant');
-    //       this.bufferSource.start(0);
-    //     //   const speechActiveState = document.getElementById('speechActiveState');
-    //     //   speechActiveState.value = "0"
-    //       this.speechState = "speaking";
-    //       window.console.log("playback started");        
-    //       const recBtn3 = document.getElementById('recording');
-    //       const recBtn4 = document.getElementById('waiting');
-    //       const recBtn5 = document.getElementById('Speaking');
-    //       recBtn3.style.display = 'none';
-    //       recBtn4.style.display = 'none';
-    //       recBtn5.style.display = 'block';
-    //       const botIcon1 = document.querySelector('#botIcon');
-    //       botIcon1.style.display = 'inline-block' 
-    //       botIcon1.setAttribute('src','./static/images/Speaking.gif')  
-    //     });
-    //   }, error => {
-    //     console.error('Speech synthesis error:', error);      
-    //     // Handle error
-    //   });    
-    // }   
 
     startSpeaking(chatGPTResponse, emotion){
       const pattern = /\[([^\]]*)\]/g;
@@ -259,7 +201,8 @@ export default class CommonFunctions {
       this.audioConfig = null;
       this.player = new SpeechSDK.SpeakerAudioDestination();
       this.audioConfig  = SpeechSDK.AudioConfig.fromSpeakerOutput(this.player);
-      const speechConfig = SpeechSDK.SpeechConfig.fromSubscription("cc2d2316e8a84c04a6045403ab7d3762", "eastus");
+      // const speechConfig = SpeechSDK.SpeechConfig.fromSubscription("cc2d2316e8a84c04a6045403ab7d3762", "eastus");  working api key don't know if its from acc or drs
+      const speechConfig = SpeechSDK.SpeechConfig.fromSubscription("6f167c6dfd7a433b8b443320dd73df42", "eastus");
       speechConfig.speechSynthesisVoiceName = 'en-US-JennyNeural';
       this.synthesizer = new SpeechSDK.SpeechSynthesizer(speechConfig,this.audioConfig);
       const cleanResponse = chatGPTResponse.replace(pattern, '');    
