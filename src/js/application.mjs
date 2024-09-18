@@ -18,7 +18,7 @@
     let speech = null
     let mixer
     // speech setup
-    const speechConfig = SpeechSDK.SpeechConfig.fromSubscription("cc2d2316e8a84c04a6045403ab7d3762", "eastus");
+    const speechConfig = SpeechSDK.SpeechConfig.fromSubscription("bc7e1881951742a7a44ec8932709db57", "eastus");
     const audioConfig = SpeechSDK.AudioConfig.fromDefaultMicrophoneInput();
     const recognizer = new SpeechSDK.SpeechRecognizer(speechConfig, audioConfig);
     const chatText = document.getElementById('text');
@@ -32,30 +32,30 @@
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('scene-container').appendChild(renderer.domElement);
 
-        // Add lights
-        const light = new THREE.AmbientLight(0x9fc5e8, 1.2); // Soft white light
-        const directionalLight = new THREE.DirectionalLight(0x9fc5e8, 1.5);
-        directionalLight.position.set(5, 20, 30);
-        directionalLight.scale.set(5, 5, 5);
-        directionalLight.castShadow = true;
-        directionalLight.shadow.camera.near = 0.1;
-        directionalLight.shadow.camera.far = 100;
-        directionalLight.shadow.camera.left = -3;
-        directionalLight.shadow.camera.right = 3;
-        directionalLight.shadow.camera.top = 3;
-        directionalLight.shadow.camera.bottom = -3;
+    // Add lights
+    const light = new THREE.AmbientLight(0x9fc5e8, 1.2); // Soft white light
+    const directionalLight = new THREE.DirectionalLight(0x9fc5e8, 1.5);
+    directionalLight.position.set(5, 20, 30);
+    directionalLight.scale.set(5, 5, 5);
+    directionalLight.castShadow = true;
+    directionalLight.shadow.camera.near = 0.1;
+    directionalLight.shadow.camera.far = 100;
+    directionalLight.shadow.camera.left = -3;
+    directionalLight.shadow.camera.right = 3;
+    directionalLight.shadow.camera.top = 3;
+    directionalLight.shadow.camera.bottom = -3;
         
     
-        // Update directional light's shadow bias and normal bias for better shadow placement
-        directionalLight.shadow.bias = -0.0005;      // Fine-tune shadow placement
-        directionalLight.shadow.normalBias = 0.05;  // Reduce shadow artifacts
+    // Update directional light's shadow bias and normal bias for better shadow placement
+    directionalLight.shadow.bias = -0.0005;      // Fine-tune shadow placement
+    directionalLight.shadow.normalBias = 0.05;  // Reduce shadow artifacts
     
-        // Increase the shadow map resolution for sharper shadows
-        directionalLight.shadow.mapSize.width = 4096;
-        directionalLight.shadow.mapSize.height = 4096;
+    // Increase the shadow map resolution for sharper shadows
+    directionalLight.shadow.mapSize.width = 4096;
+    directionalLight.shadow.mapSize.height = 4096;
     
-        scene.add(light);
-        scene.add(directionalLight);
+    scene.add(light);
+    scene.add(directionalLight);
 
     // Load environment HDR
     // const hdriLoader = new RGBELoader();
@@ -164,7 +164,7 @@
     document.addEventListener('click', () => {
         const silentAudio = new SpeechSDK.SpeakerAudioDestination();
         const silentaudioConfig = SpeechSDK.AudioConfig.fromSpeakerOutput(silentAudio);
-        const speechConfig = SpeechSDK.SpeechConfig.fromSubscription("cc2d2316e8a84c04a6045403ab7d3762", "eastus");
+        const speechConfig = SpeechSDK.SpeechConfig.fromSubscription("bc7e1881951742a7a44ec8932709db57", "eastus");
         speechConfig.speechSynthesisVoiceName = 'en-US-JennyNeural'; // or use selectedVoice.innerText
         const synthesizer = new SpeechSDK.SpeechSynthesizer(speechConfig, silentaudioConfig);
     
