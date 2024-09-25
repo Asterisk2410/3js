@@ -147,8 +147,8 @@ export default class CommonFunctions {
         
         // const apiUrl = 'http://127.0.0.1:5001/chat';
         // const apiUrl = 'https://pytestar.azurewebsites.net/chat';  //old drs api url
-        const apiUrl = 'https://pytestdrsar.azurewebsites.net/chat';  // new drs api url(testing)
-        // const apiUrl = 'https://pykirloskar.azurewebsites.net/chat'; // api url for kirloskar
+        //const apiUrl = 'https://pytestdrsar.azurewebsites.net/chat';  // new drs api url(testing)
+        const apiUrl = 'https://pykirloskar.azurewebsites.net/chat'; // api url for kirloskar
         console.log('here api')
 
         const headers = {

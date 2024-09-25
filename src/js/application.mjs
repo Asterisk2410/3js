@@ -33,26 +33,35 @@
     document.getElementById('scene-container').appendChild(renderer.domElement);
 
     // Add lights
-    const light = new THREE.AmbientLight(0x9fc5e8, 1.2); // Soft white light
-    const directionalLight = new THREE.DirectionalLight(0x9fc5e8, 1.5);
-    directionalLight.position.set(5, 20, 30);
+    const light = new THREE.AmbientLight(0xCFE5F9, 2); // Soft white light
+    const directionalLight = new THREE.DirectionalLight(0xEEEEEE, 0.6);
+    directionalLight.position.set(5, 25, 30);
     directionalLight.scale.set(5, 5, 5);
     directionalLight.castShadow = true;
     directionalLight.shadow.camera.near = 0.1;
     directionalLight.shadow.camera.far = 100;
-    directionalLight.shadow.camera.left = -3;
-    directionalLight.shadow.camera.right = 3;
-    directionalLight.shadow.camera.top = 3;
-    directionalLight.shadow.camera.bottom = -3;
+    directionalLight.shadow.camera.left = -2;
+    directionalLight.shadow.camera.right = 2;
+    directionalLight.shadow.camera.top = 2;
+    directionalLight.shadow.camera.bottom = -2;
+
+    // const directionalLight2 = new THREE.DirectionalLight(0xEEEEEE, 0.3);
+    // directionalLight2.position.set(-10, 5, 30);
+    // directionalLight2.scale.set(5, 5, 5);
+    // scene.add(directionalLight2);
+
+    // Add shadow helper
+    // const directionalLightHelper = new THREE.DirectionalLightHelper(directionalLight2, 5);
+    // scene.add(directionalLightHelper);
         
     
     // Update directional light's shadow bias and normal bias for better shadow placement
-    directionalLight.shadow.bias = -0.0005;      // Fine-tune shadow placement
-    directionalLight.shadow.normalBias = 0.05;  // Reduce shadow artifacts
+    directionalLight.shadow.bias = 0.00;      // Fine-tune shadow placement
+    directionalLight.shadow.normalBias = 0.0095;  // Reduce shadow artifacts
     
     // Increase the shadow map resolution for sharper shadows
-    directionalLight.shadow.mapSize.width = 4096;
-    directionalLight.shadow.mapSize.height = 4096;
+    directionalLight.shadow.mapSize.width = 1024;
+    directionalLight.shadow.mapSize.height = 1024;
     
     scene.add(light);
     scene.add(directionalLight);
@@ -79,23 +88,27 @@
     // );
 
     // Set camera position
-    camera.position.set(0, 1, 4);
+    camera.position.set(0, 1, 4.5);
 
     // Set background image
     // loader.load('src/static/images/3d_images.jpg', function(texture) {
     //     scene.background = texture;
     // });
     // Set background glb
-    gltfLoader.load('src/static/assets/background.glb', function (gltf) {
+    gltfLoader.load('src/static/assets/back24.glb', function (gltf) {
         const background = gltf.scene;
-        directionalLight.target = background; 
-        directionalLight.target.updateMatrixWorld();
+        // directionalLight.target = background; 
+        // directionalLight.target.updateMatrixWorld();
         background.scale.set(0.5, 0.5, 0.5);
-        background.position.set(0, 0.455, 0.4);
+        background.position.set(0, 0.473, 0.4);
         background.rotation.y = -1.6;
         background.traverse((child) => {
             if (child.isMesh) {
                 console.log('here', child);
+                // Replace the material with MeshBasicMaterial to ignore lighting effects
+                // child.material = new THREE.MeshBasicMaterial({
+                //     map: child.material.map // Preserve the texture if there's one
+                // });
                 child.receiveShadow = true;
                 child.castShadow = true;
             }
@@ -116,18 +129,18 @@
     // scene.add( mesh );
 
     // Load GLB model
-    gltfLoader.load('src/static/model/Camila_new.glb', function(gltf) {
+    gltfLoader.load('src/static/model/Camila_New_05.glb', function(gltf) {
         const character = gltf.scene;
         console.log('here') 
         character.traverse((child) => {
             if(child.isMesh){
                 console.log('here model', child);
                 child.castShadow = true;
-                child.receiveShadow = true;
+                // child.receiveShadow = true;
             }
         }); // The loaded character
         scene.add(character);
-        character.position.set(0.4, 0.5, 2);
+        character.position.set(0.4, 0.5, 2.5);
         character.scale.set(0.5, 0.5, 0.5);
         character.rotation.set(0, -0.5, 0);
 
